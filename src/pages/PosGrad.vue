@@ -1,7 +1,7 @@
 <template>
   <div>
     <Cabecalho/>
-    <ListaFichasIndividuais listaCompleta/>
+    <ListaFichasIndividuais :listaPosGrad="alunosPosGraduacao"/>
     <Rodape/>
   </div>
 </template>
@@ -12,35 +12,38 @@
   import ListaFichasIndividuais from '../components/ListaFichasIndividuais.vue'
   import Rodape from '../components/Rodape.vue'
 
-  export default{
+  export default {
     name: 'PosGrad',
     data() {
       return {
         alunoAtivo: undefined,
         filter: '',
-        alunosPosGraduacao: {}
+        alunosPosGraduacao: [],
+        hs: []
       };
     },
-    components:{
+    components: {
       Cabecalho,
       ListaFichasIndividuais,
       Rodape
     },
     methods: {
       carregarAlunosPosGraduacao() {
-      const url = 'http://thanos.icmc.usp.br:4567/api/v1/defesas';
-      fetch(url)
-        .then((data) => (data.json()))
-        .then((response) => {
-          this.alunosPosGraduacao = response;
-          console.log(JSON.stringify(this.alunosPosGraduacao))
-        });
+        const url = 'http://thanos.icmc.usp.br:4567/api/v1/defesas';
+        fetch(url)
+          .then((data) => data.json())
+          .then((response) => {
+            this.alunosPosGraduacao = response.items
+            this.hs = response.hs; 
+            //console.log("DADOS")
+            //console.log(this.alunosPosGraduacao)
+            //console.log("ITENS")
+            //console.log(this.hs)
+          });
       },
     },
-    mounted: function () {
-        this.$nextTick(function () {
-            this.carregarAlunosPosGraduacao()
-        })
+    mounted() {
+      this.carregarAlunosPosGraduacao();
     }
   }
 </script>
