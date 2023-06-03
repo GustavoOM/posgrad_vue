@@ -8,7 +8,6 @@
     }
 </script>
 
-
 <style scoped>
     a{
         color: #FFFFFF;
