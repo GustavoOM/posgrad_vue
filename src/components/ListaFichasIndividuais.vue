@@ -1,9 +1,11 @@
 <template>
     <div id="conteudo">
-      <FiltrosEBuscas/>
-      <FichaIndividualSelecionada nome="Hildebrando Munhoz Rodrigues" data="02/06/2023" curso="BSI" programa="em Vue"/>
-      <div id="itens">
-        <FichaIndividual :nome="posgrad.Nome" v-for="posgrad in listaPosGrad" :key="posgrad.Ordem"/>
+      <FiltrosEBuscas @emit-curso="getCurso" @emit-programa="getPrograma" @emit-busca="getBusca" @emit-ordem="getOrdem"/>
+      <template v-if="alunoSelecionado">
+        <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" :programa="alunoSelecionado.Programa"/>
+      </template>
+      <div id="itens" >
+        <FichaIndividual @emit-click="getAlunoPosGrad" :nome="posgrad.Nome" v-for="posgrad in getLista(listaPosGrad)" :key="posgrad.Ordem" :index="posgrad.Ordem"/>
       </div>
     </div>
   </template>
@@ -22,13 +24,11 @@
     },
     data() {
         return {
-            personagem: undefined,
-            filter: '',
-            personagens: [],
+            alunoSelecionado: undefined,
             loading: false,
             cursoSelecionado: "",
             programaSelecionado: "",
-            ordemSelecionado: "ANOC",
+            ordemSelecionada: "ANOC",
             busca: "",
         };
     },
@@ -36,6 +36,70 @@
       listaPosGrad: {
         type: Array,
         required: true
+      }
+    },
+    methods:{
+      converterData(dataString) {
+        const partes = dataString.split('/');
+        const dia = parseInt(partes[0], 10);
+        const mes = parseInt(partes[1], 10) - 1; 
+        const ano = parseInt(partes[2], 10);
+        return new Date(ano, mes, dia);
+      },
+      getAlunoPosGrad(index){
+        this.alunoSelecionado = this.listaPosGrad.find(aluno => aluno.Ordem === index);
+      },
+      fecharFicha(){
+        this.alunoSelecionado = undefined
+      },
+      getCurso(curso){
+        this.cursoSelecionado = curso;
+      },
+      getPrograma(programa){
+        this.programaSelecionado = programa;
+      },
+      getBusca(busca){
+        this.busca = busca;
+      },
+      getOrdem(ordem){
+        this.ordemSelecionada = ordem;
+      },
+      getLista(todosAlunos){
+        let novaLista = todosAlunos
+        if (this.cursoSelecionado) {
+          novaLista = novaLista.filter(aluno => aluno.Curso.toLowerCase().includes(this.cursoSelecionado.toLowerCase()));
+        }
+        if (this.programaSelecionado) {
+          novaLista = novaLista.filter(aluno => aluno.Programa.toLowerCase().includes(this.programaSelecionado.toLowerCase()));
+        }
+        if (this.busca) {
+          novaLista = novaLista.filter(aluno => aluno.Nome.toLowerCase().includes(this.busca.toLowerCase()));
+        }
+        if(this.ordemSelecionada == "ANOC"){
+          return novaLista.sort((a, b) => this.converterData(a.Data) - this.converterData(b.Data));
+        }
+        else if(this.ordemSelecionada == "ANOD"){
+          return novaLista.sort((a, b) => this.converterData(b.Data) - this.converterData(a.Data));
+        }
+        else if(this.ordemSelecionada == "NOMEC"){
+          return novaLista.sort((a, b) => a.Nome.localeCompare(b.Nome))
+        }
+        else if(this.ordemSelecionada == "NOMED"){
+          return novaLista.sort((a, b) => b.Nome.localeCompare(a.Nome));
+        }
+        else if(this.ordemSelecionada == "CURSOC"){
+          return novaLista.sort((a, b) => a.Curso.localeCompare(b.Curso))
+        }
+        else if(this.ordemSelecionada == "CURSOD"){
+          return novaLista.sort((a, b) => b.Curso.localeCompare(a.Curso));
+        }
+        else if(this.ordemSelecionada == "PROGC"){
+          return novaLista.sort((a, b) => a.Programa.localeCompare(b.Programa))
+        }
+        else if(this.ordemSelecionada == "PROGD"){
+          return novaLista.sort((a, b) => b.Programa.localeCompare(a.Programa));
+        }
+        return novaLista
       }
     }
   }
@@ -50,7 +114,7 @@
   #itens {
     background-color: #597897;
     border-radius: 20px;
-    margin: 0px 20px;
+    margin: 20px;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -2,30 +2,30 @@
     <div class="filtros">
       <div class="busca">
         <span class="titulo">Buscar por nome ou data:</span>
-        <input class="buscaInput" type="text" v-model="busca"/>
+        <input class="buscaInput" type="text" v-model="busca" @input="onInputChange"/>
       </div>
       <div class="ordens">
         <span class="titulo">Filtrar por ordens:</span>
         <div class="ordensOpcoes">
             <div class="ordensOpcao">
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'ANOC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Ano ordem crescente" @click="selecionarOrdem('ANOC')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'ANOC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Ano ordem crescente" @click="selecionarOrdem('ANOC')">
                 <span class="ordensOpcaoTitulo">ANO</span>
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'ANOD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Ano ordem decrescente" @click="selecionarOrdem('ANOD')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'ANOD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Ano ordem decrescente" @click="selecionarOrdem('ANOD')">
             </div>
             <div class="ordensOpcao">
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'NOMEC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Nome ordem crescente" @click="selecionarOrdem('NOMEC')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'NOMEC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Nome ordem crescente" @click="selecionarOrdem('NOMEC')">
                 <span class="ordensOpcaoTitulo">NOME</span>
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'NOMED' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Nome ordem decrescente" @click="selecionarOrdem('NOMED')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'NOMED' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Nome ordem decrescente" @click="selecionarOrdem('NOMED')">
             </div>
             <div class="ordensOpcao">
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'CURSOC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Curso ordem crescente" @click="selecionarOrdem('CURSOC')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'CURSOC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Curso ordem crescente" @click="selecionarOrdem('CURSOC')">
                 <span class="ordensOpcaoTitulo">CURSO</span>
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'CURSOD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Curso ordem decrescente" @click="selecionarOrdem('CURSOD')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'CURSOD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Curso ordem decrescente" @click="selecionarOrdem('CURSOD')">
             </div>
             <div class="ordensOpcao">
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'PROGC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Curso ordem crescente" @click="selecionarOrdem('PROGC')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'PROGC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Curso ordem crescente" @click="selecionarOrdem('PROGC')">
                 <span class="ordensOpcaoTitulo">PROG</span>
-                <img class="ordemOpcaoImg" :src="ordemSelecionado == 'PROGD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Curso ordem decrescente" @click="selecionarOrdem('PROGD')">
+                <img class="ordemOpcaoImg" :src="ordemSelecionada == 'PROGD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Curso ordem decrescente" @click="selecionarOrdem('PROGD')">
             </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
       return {
         cursoSelecionado: "",
         programaSelecionado: "",
-        ordemSelecionado: "ANOC",
+        ordemSelecionada: "ANOC",
         busca: "",
         opcoesCurso: [
           { label: "DD", value: "DD" },
@@ -81,6 +81,7 @@
             else{      
                 this.cursoSelecionado = curso;
             }
+            this.$emit("emit-curso", this.cursoSelecionado)
         },
         selecionarPrograma(programa) {
             if (this.programaSelecionado === programa) {
@@ -89,9 +90,14 @@
             else{      
                 this.programaSelecionado = programa;
             }
+            this.$emit("emit-programa", this.programaSelecionado)
         },
         selecionarOrdem(ordem) {    
-            this.ordemSelecionado = ordem;
+            this.ordemSelecionada = ordem;
+            this.$emit("emit-ordem", this.ordemSelecionada)
+        },
+        onInputChange() {
+          this.$emit('emit-busca', this.busca)
         }
     },
   };
@@ -99,7 +105,7 @@
   
   <style scoped>
   .filtros{
-    margin: 0 25px;
+    margin: 20px;
     justify-items: center;
     align-items: center;
     display: grid;

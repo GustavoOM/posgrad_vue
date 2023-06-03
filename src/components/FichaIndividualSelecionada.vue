@@ -1,5 +1,6 @@
 <template>
     <div class="fundo">
+        <span @click="fecharFicha()">x</span>
         <h1 class="nome">{{nome}}</h1>
         <h2 class="data">{{data}}</h2>
         <div class="cursoPrograma">
@@ -17,14 +18,29 @@
             data: String,
             curso: String,
             programa: String
+        },
+        methods:{
+            fecharFicha(){
+                this.$emit("emit-fechar")
+            }
         }
     }
 </script>
 
 <style scoped>
+    span{
+        font-size: 20px;
+        font-weight: bold;
+        font-family: "Roboto", sans-serif;
+        cursor: pointer;
+        align-self: flex-end;
+        margin-top: -12px;
+        margin-bottom: -24px;
+        color: #ec5b5b;
+    }
     .fundo{
         color: #FEA342;
-        margin: 20px;
+        margin: 0 20px;
         border-radius: 10px;
         background-color: #3d3d3d;
         border: 4px solid #FEA342;

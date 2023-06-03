@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @click="selecionaFicha(index)">
         <img src="../assets/user.svg" alt="Icone de usuário">
         <h1 class="texto">{{nome}}</h1>
     </div>
@@ -9,7 +9,13 @@
     export default{
         name: "FichaIndividual",
         props: {
-            nome: String
+            nome: String,
+            index: String
+        },
+        methods:{
+            selecionaFicha(index){
+                this.$emit("emit-click", index)
+            }
         }
     }
 </script>
