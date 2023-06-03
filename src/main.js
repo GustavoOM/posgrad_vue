@@ -1,4 +1,4 @@
 import { createApp } from 'vue'
-import PosGrad from './pages/PosGrad.vue'
+import App from './pages/App.vue'
 
-createApp(PosGrad).mount('#app')
+createApp(App).mount('#app')
