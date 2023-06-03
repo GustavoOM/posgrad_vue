@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="pagina">
     <Cabecalho/>
     <ListaFichasIndividuais :listaPosGrad="alunosPosGraduacao"/>
     <Rodape/>
@@ -47,3 +47,12 @@
     }
   }
 </script>
+
+
+<style scoped>
+  #pagina {
+    background-color: #597897;
+    font-size: 16px;
+    margin: 0;
+  }
+</style>

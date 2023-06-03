@@ -30,7 +30,7 @@
   #itens {
     background-color: #597897;
     border-radius: 20px;
-    margin: 50px 20px 50px 20px;
+    margin: 50px 20px 68px 20px;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
