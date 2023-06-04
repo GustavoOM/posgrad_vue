@@ -7,6 +7,9 @@
       <template v-if="listaPosGrad.length == 0">
           <img class="meninaJogandoBola" src="../../src/assets/gifDeCarregamento.gif" alt="Git de carregamento da lista">
       </template>
+      <template v-if="getLista(listaPosGrad).length == 0">
+          <h1 class="naoAchou">Não encontramos nada, desculpa :( </h1>
+      </template>
       <div id="itens" >
         <FichaIndividual @emit-click="getAlunoPosGrad" :nome="posgrad.Nome" v-for="posgrad in getLista(listaPosGrad)" :key="posgrad.Ordem" :index="posgrad.Ordem"/>
       </div>
@@ -121,6 +124,7 @@
     margin: 20px;
     padding: 20px;
     display: grid;
+    width: 90%;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     align-items: center;
@@ -141,5 +145,9 @@
     margin-top: 1.15rem;
   }
 
+  .naoAchou{
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+  }
   </style>
   
