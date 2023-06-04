@@ -29,7 +29,7 @@
   
   <style>
     .espacador{
-        height: calc(100vh - 190px)
+        height: calc(100vh - 166px)
     }
     .conteudo{
       display: flex;
@@ -58,6 +58,7 @@
       margin-top: -20px;
     }
     .botao {
+          text-decoration: none;
           text-align: center;
           padding: 1rem;
           margin-top: 0.5px;

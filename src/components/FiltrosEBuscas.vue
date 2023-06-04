@@ -9,22 +9,22 @@
         <div class="ordensOpcoes">
             <div class="ordensOpcao">
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'ANOC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Ano ordem crescente" @click="selecionarOrdem('ANOC')">
-                <span class="ordensOpcaoTitulo">ANO</span>
+                <span class="ordensOpcaoTitulo" :class="{ 'ordemSelected': (ordemSelecionada == 'ANOC' || ordemSelecionada == 'ANOD')}">ANO</span>
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'ANOD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Ano ordem decrescente" @click="selecionarOrdem('ANOD')">
             </div>
             <div class="ordensOpcao">
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'NOMEC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Nome ordem crescente" @click="selecionarOrdem('NOMEC')">
-                <span class="ordensOpcaoTitulo">NOME</span>
+                <span class="ordensOpcaoTitulo" :class="{ 'ordemSelected': (ordemSelecionada == 'NOMEC' || ordemSelecionada == 'NOMED')}">NOME</span>
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'NOMED' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Nome ordem decrescente" @click="selecionarOrdem('NOMED')">
             </div>
             <div class="ordensOpcao">
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'CURSOC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Curso ordem crescente" @click="selecionarOrdem('CURSOC')">
-                <span class="ordensOpcaoTitulo">CURSO</span>
+                <span class="ordensOpcaoTitulo" :class="{ 'ordemSelected': (ordemSelecionada == 'CURSOC' || ordemSelecionada == 'CURSOD')}">CURSO</span>
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'CURSOD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Curso ordem decrescente" @click="selecionarOrdem('CURSOD')">
             </div>
             <div class="ordensOpcao">
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'PROGC' ? 'src/assets/sup.svg' : 'src/assets/up.svg'" alt="Curso ordem crescente" @click="selecionarOrdem('PROGC')">
-                <span class="ordensOpcaoTitulo">PROG</span>
+                <span class="ordensOpcaoTitulo" :class="{ 'ordemSelected': (ordemSelecionada == 'PROGC' || ordemSelecionada == 'PROGD')}">PROG</span>
                 <img class="ordemOpcaoImg" :src="ordemSelecionada == 'PROGD' ? 'src/assets/sdown.svg' : 'src/assets/down.svg'" alt="Curso ordem decrescente" @click="selecionarOrdem('PROGD')">
             </div>
         </div>
@@ -135,6 +135,7 @@
   }
   .titulo{
     font-size: 20px;  
+    color: #fff;
     font-family: "Roboto", sans-serif;
   }
   .programas{
@@ -173,14 +174,13 @@
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     margin: -4px 0 -4px 0;
+    color: #3d3d3d;
+    font-weight: bold;
   }
 
   .ordemOpcaoImg{
     height: 16px;
     cursor: pointer;
-  }
-  .upSelected{
-    background-image: url('../assets/sup.svg');
   }
   .busca{
     display: flex;
@@ -193,7 +193,7 @@
     border: 2px solid #3d3d3d;
     border-radius: 5px;
     padding: 0 8px 0 8px;
-    color: #3d3d3d;
+    color: #FEA342;
     font-size: 16px;
     font-family: "Roboto", sans-serif;
   }
@@ -210,7 +210,7 @@
     border-radius: 5px;
     border: 2px solid #3d3d3d;
     margin-top: 5px;
-    background-color: rgba(255, 255, 255, 0.226);
+    background-color: transparent;
     transition: background-color 0.5s ease;
   }
 
@@ -220,16 +220,16 @@
     border-radius: 5px;
     border: 2px solid #3d3d3d;
     margin-top: 4px;
-    background-color: rgba(255, 255, 255, 0.226);
+    background-color: transparent;
     transition: background-color 0.5s ease;
   }
   
   .selected .radio-inner-curso {
-    background-color: #808080bd;
+    background-color: #FEA342;
   }
 
   .selected .radio-inner-programa {
-    background-color: #808080bd;
+    background-color: #FEA342;
   }
   
   .radio-label {
@@ -249,6 +249,9 @@
     font-size: 12px;
     cursor: pointer;
 
+  }
+  .ordemSelected{
+    color: #FEA342;
   }
   </style>
   

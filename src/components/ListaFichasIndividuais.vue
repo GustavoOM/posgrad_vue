@@ -73,7 +73,7 @@
           novaLista = novaLista.filter(aluno => aluno.Programa.toLowerCase().includes(this.programaSelecionado.toLowerCase()));
         }
         if (this.busca) {
-          novaLista = novaLista.filter(aluno => aluno.Nome.toLowerCase().includes(this.busca.toLowerCase()));
+          novaLista = novaLista.filter(aluno => (aluno.Nome.toLowerCase().includes(this.busca.toLowerCase())) || aluno.Data.toLowerCase().includes(this.busca.toLowerCase()));
         }
         if(this.ordemSelecionada == "ANOC"){
           return novaLista.sort((a, b) => this.converterData(a.Data) - this.converterData(b.Data));
