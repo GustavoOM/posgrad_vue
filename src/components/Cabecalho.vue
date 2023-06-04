@@ -23,6 +23,10 @@
     header {
         background-color: #414A53;
         padding: 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        font-family: "Roboto", sans-serif;
     }
 
     .header-content {
@@ -34,12 +38,17 @@
     .header-back-button {
         display: flex;
         align-items: center;
-        background-color: #FFFFFF;
+        background-color: transparent;
         padding: 10px;
         border-radius: 4px;
         text-decoration: none;
-        color: #414A53;
+        color: #FEA342;
         margin-right: 20px;
+        border: 0.1rem solid #FEA342;
+    }
+
+    .header-back-button:hover {
+        background-color: #FFC878; /* Nova cor laranja para o efeito de destaque */
     }
 
     .icmc-logo {
@@ -59,6 +68,7 @@
         background-image: url(../../src/assets/botaoHome.svg);
         background-size: cover;
         margin-right: 5px;
+        color: #FEA342;
     }
 
     .header-title {

@@ -1,8 +1,10 @@
 <template>
-  <Cabecalho/>
-  <router-view/>
-  <Rodape/>
-</template>
+  <div id="elementosDaPagina">
+    <Cabecalho/>
+    <router-view/>
+    <Rodape/>
+  </div>
+  </template>
 
 <script>
 import Cabecalho from './components/Cabecalho.vue';
@@ -19,5 +21,10 @@ import Rodape from './components/Rodape.vue';
   body{
     margin: 0;
     background-color: #597897;
+  }
+  #elementosDaPagina {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 </style>

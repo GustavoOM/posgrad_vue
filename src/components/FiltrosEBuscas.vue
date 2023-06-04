@@ -105,7 +105,7 @@
   
   <style scoped>
   .filtros{
-    margin: 20px;
+    margin: 124px 20px 20px 20px;
     justify-items: center;
     align-items: center;
     display: grid;
