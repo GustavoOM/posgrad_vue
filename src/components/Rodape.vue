@@ -14,13 +14,16 @@
     }
     #rodape {
         background-color: #414A53;
-        padding: 20px;
+        padding: 0.5rem;
         color: #FFFFFF;
         font-size: 1.2rem;
         text-align: center;
         max-height: 68px;
         font-family: "Roboto", sans-serif;
-        
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        max-height: 1rem;
     }
 
     /* botao */

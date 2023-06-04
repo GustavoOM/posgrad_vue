@@ -1,22 +1,27 @@
 <template>
-    <div id="conteudo">
-      <FiltrosEBuscas @emit-curso="getCurso" @emit-programa="getPrograma" @emit-busca="getBusca" @emit-ordem="getOrdem"/>
-      <template v-if="alunoSelecionado">
-        <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" :programa="alunoSelecionado.Programa"/>
+  <div id="conteudo">
+    <FiltrosEBuscas @emit-curso="getCurso" @emit-programa="getPrograma" @emit-busca="getBusca" @emit-ordem="getOrdem"/>
+    <template v-if="alunoSelecionado">
+      <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" :programa="alunoSelecionado.Programa"/>
+    </template>
+    <template v-if="listaPosGrad.length == 0">
+        <img class="meninaJogandoBola" src="../../src/assets/gifDeCarregamento.gif" alt="Git de carregamento da lista">
+    </template>
+    <template v-if="getLista(listaPosGrad).length == 0 && (cursoSelecionado+programaSelecionado+ordemSelecionada+busca)!='ANOC' ">
+        <h1 class="mensagemNaoAchou">Nenhum aluno foi encontrado a seguinte combinação de critérios :</h1>
+        <ul id="listaDeAtributosNaoEncontrados">
+          <li v-if="busca">{{ isNaN(parseInt(busca.charAt(0))) ? "Nome: "+ busca : "Data: "+ busca }}</li>
+          <li v-if="programaSelecionado">Curso: {{ programaSelecionado }}</li>
+          <li v-if="cursoSelecionado">Programa: {{ cursoSelecionado }}</li>
+        </ul>
       </template>
-      <template v-if="listaPosGrad.length == 0">
-          <img class="meninaJogandoBola" src="../../src/assets/gifDeCarregamento.gif" alt="Git de carregamento da lista">
-      </template>
-      <template v-if="getLista(listaPosGrad).length == 0">
-          <h1 class="naoAchou">Não encontramos nada, desculpa :( </h1>
-      </template>
-      <div id="itens" >
-        <FichaIndividual @emit-click="getAlunoPosGrad" :nome="posgrad.Nome" v-for="posgrad in getLista(listaPosGrad)" :key="posgrad.Ordem" :index="posgrad.Ordem"/>
-      </div>
+    <div id="itens" >
+      <FichaIndividual @emit-click="getAlunoPosGrad" :nome="posgrad.Nome" v-for="posgrad in getLista(listaPosGrad)" :key="posgrad.Ordem" :index="posgrad.Ordem"/>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script>
+<script>
   import FichaIndividual from '../components/FichaIndividual.vue'
   import FiltrosEBuscas from '../components/FiltrosEBuscas.vue'
   import FichaIndividualSelecionada from '../components/FichaIndividualSelecionada.vue'
@@ -31,7 +36,6 @@
     data() {
         return {
             alunoSelecionado: undefined,
-            loading: false,
             cursoSelecionado: "",
             programaSelecionado: "",
             ordemSelecionada: "ANOC",
@@ -109,9 +113,9 @@
       }
     }
   }
-  </script>
+</script>
   
-  <style scoped>
+<style scoped>
 
   #conteudo{
     display: flex;
@@ -145,9 +149,26 @@
     margin-top: 1.15rem;
   }
 
-  .naoAchou{
+  .mensagemNaoAchou{
+    margin-top: 2rem;
     color: #fff;
     font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
   }
-  </style>
+
+  #listaDeAtributosNaoEncontrados {
+    display: flex;
+    list-style: none;
+    margin-top: 2rem;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fff;
+    justify-content: left;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 0.7rem;
+  }
+</style>
   
