@@ -4,7 +4,6 @@
             <a class="icmc-logo"></a>
             <h1 class="header-title">Lista de fichas dos alunos de pós graduação</h1>
             <router-link to="/" class="header-back-button">
-                <span class="home-icon"></span>
                 Home
             </router-link>
         </div>
@@ -44,11 +43,12 @@
         text-decoration: none;
         color: #FEA342;
         margin-right: 20px;
-        border: 0.1rem solid #FEA342;
+        border: 0.15rem solid #FEA342;
     }
 
     .header-back-button:hover {
-        background-color: #FFC878; /* Nova cor laranja para o efeito de destaque */
+        color: #3D3D3D;
+        background-color: #FEA342; /* Nova cor laranja para o efeito de destaque */
     }
 
     .icmc-logo {
@@ -60,17 +60,6 @@
         background-position: center;
         margin-right: 5px;
     }
-
-
-    .home-icon {
-        width: 1.25rem;
-        height: 1.25rem;
-        background-image: url(../../src/assets/botaoHome.svg);
-        background-size: cover;
-        margin-right: 5px;
-        color: #FEA342;
-    }
-
     .header-title {
         color: #FFFFFF;
         margin: 0;
