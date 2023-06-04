@@ -1,8 +1,9 @@
 <template>
     <header>
         <div class="header-content">
+            <a class="icmc-logo"></a>
             <h1 class="header-title">Lista de fichas dos alunos de pós graduação</h1>
-            <a href="#" class="header-back-button">
+            <a href="/" class="header-back-button">
                 <span class="home-icon"></span>
                 Home
             </a>
@@ -22,11 +23,13 @@
     header {
         background-color: #414A53;
         padding: 20px;
+        width: 100%;
     }
 
     .header-content {
         display: flex;
         align-items: center;
+        justify-content: space-around;
     }
 
     .header-back-button {
@@ -38,9 +41,18 @@
         text-decoration: none;
         color: #414A53;
         margin-right: 20px;
-        position: absolute;
-        right: 0;
     }
+
+    .icmc-logo {
+        width: 10rem; 
+        height: 4rem; 
+        background-image: url(../../src/assets/logoICMC.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 5px;
+    }
+
 
     .home-icon {
         width: 1.25rem;
