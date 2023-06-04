@@ -3,10 +3,10 @@
         <div class="header-content">
             <a class="icmc-logo"></a>
             <h1 class="header-title">Lista de fichas dos alunos de pós graduação</h1>
-            <a href="/" class="header-back-button">
+            <router-link to="/" class="header-back-button">
                 <span class="home-icon"></span>
                 Home
-            </a>
+            </router-link>
         </div>
     </header>
 
