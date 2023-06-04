@@ -16,11 +16,11 @@
         background-color: #414A53;
         padding: 20px;
         color: #FFFFFF;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         text-align: center;
         max-height: 68px;
-        width: 100%;
         font-family: "Roboto", sans-serif;
+        
     }
 
     /* botao */
