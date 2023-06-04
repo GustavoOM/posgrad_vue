@@ -52,6 +52,7 @@
     }
     .nomeAluno{
       font-size: 36px;
+      color: #FEA342;
     }
     .nuspAluno{
       font-size: 64px;
