@@ -4,6 +4,9 @@
       <template v-if="alunoSelecionado">
         <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" :programa="alunoSelecionado.Programa"/>
       </template>
+      <template v-if="listaPosGrad.length == 0">
+          <img class="meninaJogandoBola" src="../../src/assets/gifDeCarregamento.gif" alt="Git de carregamento da lista">
+      </template>
       <div id="itens" >
         <FichaIndividual @emit-click="getAlunoPosGrad" :nome="posgrad.Nome" v-for="posgrad in getLista(listaPosGrad)" :key="posgrad.Ordem" :index="posgrad.Ordem"/>
       </div>
@@ -106,6 +109,7 @@
   </script>
   
   <style scoped>
+
   #conteudo{
     display: flex;
     flex-direction: column;
@@ -132,5 +136,10 @@
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
   }
+
+  .meninaJogandoBola {
+    margin-top: 1.15rem;
+  }
+
   </style>
   
