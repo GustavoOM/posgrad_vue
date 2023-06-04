@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend da aplicacao das defesas de doutorado e mestrado.",
+  "main": "pessoasICMCApi.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node pessoasICMCApi.mjs"
+  },
+  "author": "EduardoMirandaz",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.32"
+  }
+}

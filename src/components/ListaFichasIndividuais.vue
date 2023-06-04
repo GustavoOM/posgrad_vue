@@ -2,7 +2,8 @@
   <div id="conteudo">
     <FiltrosEBuscas @emit-curso="getCurso" @emit-programa="getPrograma" @emit-busca="getBusca" @emit-ordem="getOrdem"/>
     <template v-if="alunoSelecionado">
-      <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" :programa="alunoSelecionado.Programa"/>
+      <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" 
+      :programa="alunoSelecionado.Programa" :descricao="alunoSelecionado.descricao"/>
     </template>
     <template v-if="listaPosGrad.length == 0">
         <img class="meninaJogandoBola" src="../../src/assets/gifDeCarregamento.gif" alt="Git de carregamento da lista">
@@ -25,7 +26,9 @@
   import FichaIndividual from '../components/FichaIndividual.vue'
   import FiltrosEBuscas from '../components/FiltrosEBuscas.vue'
   import FichaIndividualSelecionada from '../components/FichaIndividualSelecionada.vue'
-  
+  import recuperarInformacoesExtrasDaPessoa from '../api/pessoasICMCApi'
+
+
   export default {
     name: "ListaFichasIndividuais",
     components: {
@@ -58,6 +61,9 @@
       },
       getAlunoPosGrad(index){
         this.alunoSelecionado = this.listaPosGrad.find(aluno => aluno.Ordem === index);
+        this.alunoSelecionado.descricao = 'DESCRICAOOOOO';
+        recuperarInformacoesExtrasDaPessoa(this.alunoSelecionado.Nome)
+        console.log(this.alunoSelecionado)
       },
       fecharFicha(){
         this.alunoSelecionado = undefined

@@ -7,6 +7,7 @@
             <div class="cursoPrograma">
                 <h3>Curso: {{curso}}</h3>
                 <h3>Programa: {{programa}}</h3>
+                <h3>Descricao: {{descricao}}</h3>
             </div>
         </div>
         <img class="fecharCard" @click="fecharFicha()" src="../assets/x.svg" alt="imagem do posgraduando selecionado">
@@ -20,7 +21,8 @@
             nome: String,
             data: String,
             curso: String,
-            programa: String
+            programa: String,
+            descricao: String
         },
         methods:{
             fecharFicha(){
