@@ -23,13 +23,12 @@
     header {
         background-color: #414A53;
         padding: 20px;
-        width: 100%;
     }
 
     .header-content {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-around;        
     }
 
     .header-back-button {
