@@ -1,22 +1,24 @@
 <template>
-    <div class="conteudo">
-      <div class="alunos">
-        <div class="aluno">
-          <h1 class="nomeAluno">Eduardo Costa Miranda Azevedo</h1>
-          <h2 class="nuspAluno">12677151</h2>
-          <h3>→</h3>
+    <div>
+        <div class="espacador"></div>
+        <div class="conteudo">
+          <div class="alunos">
+            <div class="aluno">
+              <h1 class="nomeAluno">Eduardo Costa Miranda Azevedo</h1>
+              <h2 class="nuspAluno">12677151</h2>
+              <h3>→</h3>
+            </div>
+            <div class="aluno">
+              <h1 class="nomeAluno">Gustavo de Oliveira Martins</h1>
+              <h2 class="nuspAluno">12625531</h2>
+              <h3>←</h3>
+            </div>
+          </div>
+          <router-link to="/posgrad" class="botao">
+            Ir para listagem de pós graduações
+          </router-link>
         </div>
-        <div class="aluno">
-          <h1 class="nomeAluno">Gustavo de Oliveira Martins</h1>
-          <h2 class="nuspAluno">12625531</h2>
-          <h3>←</h3>
-        </div>
-      </div>
-      <router-link to="/posgrad" class="botao">
-        Ir para listagem de pós graduações
-      </router-link>
     </div>
-    <router-view/>
   </template>
   
   <script>
@@ -26,9 +28,8 @@
   </script>
   
   <style>
-    body{
-      margin: 0;
-      background-color: #597897;
+    .espacador{
+        height: calc(100vh - 190px)
     }
     .conteudo{
       display: flex;

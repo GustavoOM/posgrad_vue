@@ -187,6 +187,7 @@
     flex-direction: column;
   }
   .buscaInput{
+    background-color: transparent;
     margin-top: 5px;
     height: 32px;
     border: 2px solid #3d3d3d;
