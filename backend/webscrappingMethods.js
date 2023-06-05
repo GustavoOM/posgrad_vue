@@ -11,7 +11,7 @@ export function extrairInformacoesParaRecuperarPessoaEspecifica(html) {
       return { idPessoa, urlFoto };
     }
   
-    return { idPessoa: undefined, urlFoto: undefined };
+    return { idPessoa: -1, urlFoto: -1 };
   }
   
   

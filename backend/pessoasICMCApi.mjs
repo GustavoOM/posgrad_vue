@@ -66,10 +66,16 @@ app.post('/pessoas', async (req, res) => {
       
     );
     
+    //TODO tratar para quando o ID nao é encontrado, já parar por aqui e retornar um objeto com -1
     var {idPessoa, urlFoto} = extrairInformacoesParaRecuperarPessoaEspecifica(response.data);
 
-    let email = await recuperarEmailDosHeaders(idPessoa);
+    if(idPessoa === -1) {
+      return {};
+    }
 
+    let email = -1;
+    email = await recuperarEmailDosHeaders(idPessoa);
+ 
     try {
 
       var dadosExtrasFinais = await recuperarDadosExtrasFinais(idPessoa)
@@ -82,7 +88,6 @@ app.post('/pessoas', async (req, res) => {
     }catch(error) {
       console.error(error)
     }    
-    // res.send({idPessoa, urlFoto}); retorno será nesse formato no final, com todos os atributos recuperados.
 
   } catch (error) { 
     console.error(error)
