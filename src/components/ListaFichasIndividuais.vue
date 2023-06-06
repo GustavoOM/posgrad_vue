@@ -43,7 +43,19 @@
             programaSelecionado: "",
             ordemSelecionada: "ANOC",
             busca: "",
-            atributosExtras: Object
+            atributosExtras:{ 
+              curriculoLattes:-1,
+               descricaoGeralICMC:-1,
+               email:-1,
+               idPessoa:-1,
+               nUSP:-1,
+               paginaPessoal:-1,
+               papelNoICMC:-1,
+               researcherIDNumber:-1,
+               researcherIDUrl:-1,
+               urlFoto:-1, 
+               telefone:-1
+            }
         };
     },
     props: {
