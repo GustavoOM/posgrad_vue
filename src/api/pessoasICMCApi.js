@@ -11,13 +11,12 @@ const novosAtributos = {
     researcherIDNumber: '...',
     researcherIDUrl: '...',
     telefone: '...',
-    urlFoto: '../../assets/fotoDefault.jpg'
+    urlFoto: '...'
 };
 
 
 export default function recuperarInformacoesExtrasDaPessoa(nomeDaPessoa){
-    novosAtributos = buscarMaisInformacoesNoSiteDoICMC(nomeDaPessoa);
-    return novosAtributos;
+    return buscarMaisInformacoesNoSiteDoICMC(nomeDaPessoa);     
 }
 
 async function buscarMaisInformacoesNoSiteDoICMC(nome){
