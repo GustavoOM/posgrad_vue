@@ -7,7 +7,8 @@ export function extrairInformacoesParaRecuperarPessoaEspecifica(html) {
   
     if (matchId && matchId[1] && matchUrlFoto && matchUrlFoto[1]) {
       const idPessoa = matchId[1];
-      const urlFoto = matchUrlFoto[1];
+      let urlFoto = matchUrlFoto[1];
+      if(urlFoto == 'https://web.icmc.usp.br/SCAPINST/fotos_pessoas/0.jpg'){ urlFoto = -1}
       return { idPessoa, urlFoto };
     }
   
@@ -40,7 +41,7 @@ export function recuperarDadosPessoaEspecifica(html) {
     // Pegando a descrição geral
     let possuiDescricaoGeral = html.indexOf('</h4>') !== -1
     if( possuiDescricaoGeral ) { 
-      descricaoGeralICMC = html.slice(html.indexOf('</h4>') + 5, html.indexOf('<p>')) 
+      descricaoGeralICMC = html.slice(html.indexOf('</h4>') + 5, html.indexOf('<p')).replace(/<[^>]+>/g, ' ');            
     } 
       
     

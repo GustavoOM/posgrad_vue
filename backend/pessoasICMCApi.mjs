@@ -66,10 +66,11 @@ app.post('/pessoas', async (req, res) => {
       
     );
     
-    //TODO tratar para quando o ID nao é encontrado, já parar por aqui e retornar um objeto com -1
     var {idPessoa, urlFoto} = extrairInformacoesParaRecuperarPessoaEspecifica(response.data);
 
-    if(idPessoa === -1) {
+    if(idPessoa == -1) { 
+      res.send({curriculoLattes:-1, descricaoGeralICMC:-1, email:-1, idPessoa:-1, nUSP:-1, paginaPessoal:-1, papelNoICMC:-1, researcherIDNumber:-1, researcherIDUrl:-1, urlFoto:-1, telefone:-1})
+      console.log('Nenhuma requisição de informação extra foi bem sucedida. Provavelmente esta pessoa não está na base do ICMC.')
       return {};
     }
 
@@ -83,6 +84,7 @@ app.post('/pessoas', async (req, res) => {
       dadosExtrasFinais.email = email;
       dadosExtrasFinais.urlFoto = urlFoto;
       dadosExtrasFinais.nUSP = calcularNumeroUSP(dadosExtrasFinais);
+      console.log(dadosExtrasFinais)
       res.send(dadosExtrasFinais)
     
     }catch(error) {
