@@ -1,29 +1,26 @@
-# posgrad
+# SSC0961 - Desenvolvimento Web e Mobile - T1
 
-This template should help get you started developing with Vue 3 in Vite.
+Esse repositório tem o objetivo de criar uma aplicação web para servir como método de avaliação para a disciplina SSC0961 - Desenvolvimento Web e Mobile 
 
-## Recommended IDE Setup
+Os alunos responsáveis pelo projeto são:
+Eduardo Costa Miranda Azevedo (12677151) e Gustavo de Oliveira Martins (12625531)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## IDE recomendada para executar o programa
 
-## Customize configuration
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Instalar as dependencias do projeto
 
-## Project Setup
+Para instalar as dependencias necessárias para rodar a aplicação, basta estar na pasta do projeto e rodar o comando:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Executar o projeto
+
+Para executar a aplicação, basta estar na pasta do projeto e rodar o comando:
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
