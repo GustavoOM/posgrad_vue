@@ -2,7 +2,8 @@
   <div id="conteudo">
     <FiltrosEBuscas @emit-curso="getCurso" @emit-programa="getPrograma" @emit-busca="getBusca" @emit-ordem="getOrdem"/>
     <template v-if="alunoSelecionado">
-      <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" :programa="alunoSelecionado.Programa"/>
+      <FichaIndividualSelecionada @emit-fechar="fecharFicha" :nome="alunoSelecionado.Nome" :data="alunoSelecionado.Data" :curso="alunoSelecionado.Curso" 
+      :programa="alunoSelecionado.Programa" :descricao="alunoSelecionado.descricao" :atributosExtras="atributosExtras"/>
     </template>
     <template v-if="listaPosGrad.length == 0">
         <img class="meninaJogandoBola" src="../../src/assets/gifDeCarregamento.gif" alt="Git de carregamento da lista">
@@ -25,7 +26,9 @@
   import FichaIndividual from '../components/FichaIndividual.vue'
   import FiltrosEBuscas from '../components/FiltrosEBuscas.vue'
   import FichaIndividualSelecionada from '../components/FichaIndividualSelecionada.vue'
-  
+  import axios from 'axios';
+
+
   export default {
     name: "ListaFichasIndividuais",
     components: {
@@ -40,6 +43,7 @@
             programaSelecionado: "",
             ordemSelecionada: "ANOC",
             busca: "",
+            atributosExtras: Object
         };
     },
     props: {
@@ -56,8 +60,26 @@
         const ano = parseInt(partes[2], 10);
         return new Date(ano, mes, dia);
       },
-      getAlunoPosGrad(index){
+      async getAlunoPosGrad(index){
+        this.fecharFicha();
+
         this.alunoSelecionado = this.listaPosGrad.find(aluno => aluno.Ordem === index);
+        
+        const requestBody = {
+              grupo: '',
+              depto: '',
+              nome: this.alunoSelecionado.Nome,
+              pagina: '1',
+              titulo: ''
+          };
+          try { 
+              const response = await axios.post('http://localhost:4000/pessoas', requestBody, {
+                  headers: { 'Content-Type': 'application/json' }
+              });
+              this.atributosExtras = response.data;
+            } catch (error) {
+          console.error(error);
+          }
       },
       fecharFicha(){
         this.alunoSelecionado = undefined
