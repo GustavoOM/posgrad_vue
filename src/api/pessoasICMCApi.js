@@ -1,24 +1,26 @@
 import axios from 'axios'
 
 const novosAtributos = {
-    foto: '../../assets/fotoDefault.jpg',
-    descricao: '...',
-    papelDesempenhado: '...',
-    researcherID: '...',
-    sala: '...',
-    telefone: '...',
+    curriculoLattes: '...',
+    descricaoGeralICMC: '...',
+    email: '...',
+    idPessoa: '...',
+    nUSP: '...',
     paginaPessoal: '...',
-    numero: '...'
+    papelNoICMC: '...',
+    researcherIDNumber: '...',
+    researcherIDUrl: '...',
+    telefone: '...',
+    urlFoto: '../../assets/fotoDefault.jpg'
 };
-  
+
 
 export default function recuperarInformacoesExtrasDaPessoa(nomeDaPessoa){
-    realizarRequisicaoPessoas(nomeDaPessoa);
-    // idPessoaEncontrada, fotoPessoaEncontrada = 
+    novosAtributos = buscarMaisInformacoesNoSiteDoICMC(nomeDaPessoa);
     return novosAtributos;
-  }
+}
 
-async function realizarRequisicaoPessoas(nome){
+async function buscarMaisInformacoesNoSiteDoICMC(nome){
     const requestBody = {
         grupo: '',
         depto: '',
@@ -29,8 +31,8 @@ async function realizarRequisicaoPessoas(nome){
     try {
         const response = await axios.post('http://localhost:4000/pessoas', requestBody, {
             headers: { 'Content-Type': 'application/json' }
-          });
-        console.log(response.data);
+        });
+        return(response.data);
     } catch (error) {
     console.error(error);
     }
