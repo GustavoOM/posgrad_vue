@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"cd backend && node pessoasICMCApi.mjs\"",
     "build": "vite build",
     "preview": "vite preview",
     "start": "concurrently \"vite\" \"cd backend && node pessoasICMCApi.mjs\""
