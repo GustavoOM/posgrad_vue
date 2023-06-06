@@ -15,7 +15,7 @@
                 <h3>Programa: {{ programa }}</h3>
 
                 <h3 v-if="atributosExtras.curriculoLattes !== -1">Currículo Lattes: {{ atributosExtras.curriculoLattes }}</h3>
-                <h3 v-if="atributosExtras.descricaoGeralICMC !== -1">Descrição Geral ICMC: {{ atributosExtras.descricaoGeralICMC }}</h3>
+                <h3 id="descricaoGeral" v-if="atributosExtras.descricaoGeralICMC !== -1">Descrição Geral ICMC: {{ atributosExtras.descricaoGeralICMC }}</h3>
                 <h3 v-if="atributosExtras.email !== -1">Email: {{ atributosExtras.email }}</h3>
                 <h3 v-if="atributosExtras.idPessoa !== -1">ID Pessoa: {{ atributosExtras.idPessoa }}</h3>
                 <h3 v-if="atributosExtras.nUSP !== -1">NUSP: {{ atributosExtras.nUSP }}</h3>
@@ -58,6 +58,7 @@
         color: #ec5b5b;
     }
     img{
+        margin: 2rem;
         height: 300px;
         border-radius: 10px;
         object-fit: cover;
@@ -74,6 +75,10 @@
         align-items: center;
         gap: 20px;
         align-items: flex-start;
+    }
+
+    #descricaoGeral{
+        max-width: 550px;
     }
     .nome{
         text-align: center;
